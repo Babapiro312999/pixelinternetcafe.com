@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Pixel İnternet Cafe</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#070b14;--pn:#0f1a2e;--ln:#2b3f66;--cy:#58d8ff;--gd:#ffcf4a;--gr:#3ddc84;--tx:#e8f1ff;--mu:#8ea3c7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font:14px "Pixelify Sans",ui-monospace,monospace;display:flex;flex-direction:column;overflow:hidden}
+#top{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:#0a1020;border-bottom:2px solid var(--ln);align-items:center}
+.chip{background:var(--pn);border:2px solid var(--ln);padding:3px 8px;display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:14px}
+.chip b{font-weight:700;color:var(--gd)}.lv{background:var(--gr);color:#04210f;padding:0 5px;font-weight:700}
+.grow{flex:1;min-width:130px}
+.xp{flex:1;height:6px;background:#1b2b4a;margin-left:4px;min-width:40px}.xp u{display:block;height:100%;background:var(--cy);width:0}
+#top button{font:inherit;background:var(--pn);color:var(--tx);border:2px solid var(--ln);padding:3px 8px;font-size:15px}
+#top button.on{border-color:var(--cy);color:var(--cy)}
+#top button:active,#md button:active{transform:translateY(1px)}
+button:focus-visible{outline:2px solid var(--gd);outline-offset:1px}
+#wrap{flex:1;min-height:0;display:flex;justify-content:center;align-items:flex-start;overflow:auto}
+#box{position:relative;width:min(100%,calc((100dvh - 80px)*1.28))}
+#cv{display:block;width:100%;aspect-ratio:32/25;image-rendering:pixelated;background:#222;touch-action:manipulation}
+.bot{display:flex;gap:6px;padding:6px;flex-wrap:wrap}
+.card{background:#0c1426ee;border:2px solid var(--ln);padding:6px 9px;flex:1;min-width:150px}
+.card small{display:block;color:var(--mu);font-size:12px}
+.card b{display:block;font-size:14px}
+#gb{height:8px;background:#1b2b4a;margin-top:4px}#gb u{display:block;height:100%;background:var(--cy);width:0}
+#box{display:flex;flex-direction:column}#cv,.bot{flex:none}
+#pcm{flex:1;min-height:170px;margin:0 6px 6px;display:flex;flex-direction:column;align-items:center}
+#scr{flex:1;width:100%;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding:0;background:#031018 repeating-linear-gradient(#0000 0 2px,#58d8ff0d 2px 3px);border:6px solid #2a3350;outline:2px solid #0d1222;box-shadow:inset 0 0 22px #58d8ff33,0 0 0 2px #3b4668}
+#stand{width:26%;height:9px;background:#1b2233;border-top:3px solid #0d1222}#stand:after{content:"";display:block;width:230%;margin-left:-65%;height:5px;background:#2a3350;margin-top:6px}
+.hd{color:var(--cy);font-weight:700;padding:2px 2px 6px;border-bottom:2px solid #1f6d8c;margin-bottom:6px;letter-spacing:.5px}
+.ds{color:#9fb3d9;font-size:12px;line-height:1.35;margin:-2px 2px 8px}.q0{color:#5c7aa0;padding:8px 2px}.q0 .cur{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.q{display:flex;align-items:center;gap:8px;width:100%;margin:0 0 6px;padding:7px 8px;background:#0a2230;border:2px solid #1f6d8c;color:#cfefff;font:inherit;font-size:14px;text-align:left}
+.q span:nth-child(2){flex:1}.q span:first-child{font-size:18px}
+.q em{font-style:normal;background:var(--gr);color:#04210f;padding:3px 8px;font-weight:700;white-space:nowrap}
+.q.dis em{background:#3a4a66;color:#8ea3c7}.q:active{transform:translateY(1px)}
+@media (orientation:portrait){#wrap{align-items:stretch}}
+@media (orientation:landscape){#pcm{display:none}#pcm.ov{display:flex;position:fixed;left:0;right:0;bottom:0;height:72%;margin:0;padding:6px;background:#070b14f2;z-index:8}.ov #stand{display:none}}
+#ob{color:var(--gd);margin-left:3px}#top button.pend{border-color:var(--gd)}
+#nt{border-color:var(--gr);transition:opacity .3s}#nt.off{opacity:.35}
+@media (orientation:landscape){#tu{position:absolute;left:6px;right:6px;bottom:36px;margin:0;padding:3px 6px}#tu #tx{font-size:11px}.bot{position:absolute;left:0;right:0;bottom:0;pointer-events:none;padding:4px}.card{flex:none;width:30%;min-width:0;padding:3px 6px}.card small{font-size:10px}.card b{font-size:11px}#nt{margin-left:auto}#box{width:min(100%,calc((100dvh - 44px)*1.28))}}
+#md{position:fixed;left:0;right:0;bottom:0;max-height:78%;overflow:auto;display:none;background:#0a1226f2;border-top:3px solid var(--cy);padding:6px 10px calc(12px + env(safe-area-inset-bottom,0px));z-index:8}
+#md.on{display:block}
+.tabs{display:flex;gap:4px;margin:4px 0 6px}.tabs button{flex:1}
+#md button{font:inherit;background:var(--pn);color:var(--tx);border:2px solid var(--ln);padding:6px 8px}
+#md button.on{border-color:var(--cy);color:var(--cy)}
+#md button:disabled{color:#5a6a88;border-color:#1d2a46}
+.row{display:flex;gap:8px;align-items:center;padding:7px 0;border-top:1px solid #1d2a46}
+.row div{flex:1}.row small{display:block;color:var(--mu)}.row button{flex:none;min-width:92px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+#pcm{min-height:230px}
+#tb{display:flex;gap:3px;padding:4px;background:#0a2230;border-bottom:2px solid #1f6d8c;flex:none}
+#tb button{flex:1;min-width:0;font:inherit;font-size:15px;background:#0c1c2c;color:#cfefff;border:2px solid #1f6d8c;padding:4px 2px;position:relative;white-space:nowrap;display:flex;gap:4px;align-items:center;justify-content:center}
+#tb button.on{border-color:var(--cy);color:var(--cy);flex:2.4}#tb button:not(.on) span{display:none}
+#tb .bd{position:absolute;top:-6px;right:-3px;background:var(--gd);color:#241a00;font-size:11px;padding:0 4px}
+#tb .x{display:none;flex:none;padding:4px 10px}.ov #tb .x{display:flex}
+#sc{flex:1;min-height:0;overflow:auto;padding:6px}#sc .row{border-top:1px solid #1f6d8c55}.ic{font-style:normal;font-size:22px}
+#sc .row button{font:inherit;background:#0a2230;color:#cfefff;border:2px solid #1f6d8c;padding:6px 8px}#sc .row button:disabled{color:#5a6a88;border-color:#1d2a46}
+#ti{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:#070b14;transition:opacity .5s}#ti.off{opacity:0;pointer-events:none}
+#tcv{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated}
+.tc{position:relative;text-align:center;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.t1{font-size:clamp(40px,min(16vw,20vh),96px);font-weight:700;color:#ffcf4a;letter-spacing:6px;line-height:1;text-shadow:4px 4px 0 #b3541e,0 0 24px #ffcf4a88}
+.t2{font-size:clamp(22px,min(8vw,10vh),52px);font-weight:700;color:#58d8ff;letter-spacing:3px;line-height:1;text-shadow:3px 3px 0 #1f4f9c,0 0 22px #58d8ff;animation:fk 3s steps(1) infinite}
+@keyframes fk{0%,92%,96%{opacity:1}94%,98%{opacity:.55}}
+.t3{color:#9fe4ff;letter-spacing:2px;margin-bottom:10px}
+.tc button{font:inherit;font-size:18px;font-weight:700;color:#04210f;background:#3ddc84;border:3px solid #0d1222;padding:10px 26px;box-shadow:4px 4px 0 #1a7a47;min-width:220px}
+.tc button.sc2{background:#0c1c2c;color:#58d8ff;border-color:#1f6d8c;box-shadow:4px 4px 0 #0a1422;font-size:14px;padding:6px 18px}
+.tc button:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #1a7a47}
+.fl{position:absolute;inset:0;pointer-events:none}.fl i{position:absolute;font-style:normal;font-size:28px;animation:bb 3s ease-in-out infinite}
+@keyframes bb{50%{transform:translateY(-12px)}}
+.fl i:nth-child(1){left:8%;top:16%}.fl i:nth-child(2){right:9%;top:24%;animation-delay:-.7s}.fl i:nth-child(3){left:14%;top:58%;animation-delay:-1.4s}.fl i:nth-child(4){right:12%;top:60%;animation-delay:-2s}.fl i:nth-child(5){left:46%;top:8%;animation-delay:-1s}
+.cr{position:absolute;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));color:#9fb3d9;font-size:13px;text-shadow:1px 1px 0 #000}.cr b{color:#ffcf4a}
+.vr{position:absolute;left:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));color:#5a6a88;font-size:12px}
+.hint{color:#8ea3c7;font-size:12px;animation:bl 1.2s steps(1) infinite}
+#tu[hidden]{display:none}#tu{position:relative;flex:none;margin:6px 6px 0;z-index:5;display:flex;gap:8px;align-items:center;background:#0a1226f2;border:2px solid var(--gd);padding:6px 8px;box-shadow:3px 3px 0 #000a;animation:tp 1.4s ease-in-out infinite}
+@keyframes tp{50%{border-color:#ffcf4a55}}
+#tu .tn{font-size:20px}#tu #tx{flex:1;font-size:13px;line-height:1.3}#tu button{pointer-events:auto;font:inherit;font-size:12px;background:#0c1c2c;color:#8ea3c7;border:2px solid var(--ln);padding:3px 7px}
+#hw{position:fixed;inset:0;z-index:21;display:flex;align-items:center;justify-content:center;background:#070b14ee;transition:opacity .4s}#hw.off{opacity:0;pointer-events:none}
+.hc{width:min(92%,440px);max-height:94%;overflow:auto;background:#0f1a2e;border:3px solid var(--cy);box-shadow:6px 6px 0 #000a;padding:14px}
+.hc h2{margin:0 0 4px;font-size:20px;color:var(--gd);text-shadow:2px 2px 0 #b3541e}.hc h3{margin:0 0 8px;font-size:14px;color:var(--cy);font-weight:400}
+.hc p{margin:0;padding:6px 0;border-top:1px solid #1d2a46;display:flex;gap:10px;align-items:center;font-size:14px}.hc p i{font-style:normal;font-size:22px}
+#fin{font:inherit;font-size:18px;font-weight:700;color:#04210f;background:#3ddc84;border:3px solid #0d1222;padding:10px;box-shadow:4px 4px 0 #1a7a47;width:100%;margin-top:10px}#fin:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #1a7a47}
+</style></head><body>
+<div id="top">
+ <div class="chip"><span class="lv" id="lvb">1</span>₺ <b id="m">0</b></div>
+ <div class="chip">👥 <b id="oc">0/4</b></div>
+ <div class="chip grow">⭐ Seviye <b id="lv">1</b><i class="xp"><u id="xp"></u></i></div>
+ <div class="chip">🕒 <b id="dt"></b></div>
+ <button data-sp="0" title="Duraklat">⏸</button><button data-sp="1" class="on" title="Normal">▶</button><button data-sp="2" title="Hızlı">⏩</button>
+ 
+</div>
+<div id="wrap"><div id="box"><canvas id="cv"></canvas><div id="tu" hidden><span class="tn">🎓</span><span id="tx"></span><button id="sk">Geç ✕</button></div>
+ <div class="bot"><div class="card"><small>Hedef</small><b id="gt"></b><div id="gb"><u></u></div></div><div class="card" id="nt"><small id="n1">Hoş geldin!</small><b id="n2">Kafen açık. İstekleri alttaki Sahip PC ekranından yönet. Parayı toplamak için 💰'ya dokun.</b></div></div>
+<div id="pcm"><div id="scr"><div id="tb"></div><div id="sc"></div></div><div id="stand"></div></div>
+</div></div>
+
+<div id="ti"><canvas id="tcv"></canvas><div class="fl"><i>🎮</i><i>☕</i><i>🥪</i><i>🖥️</i><i>💰</i></div>
+<div class="tc"><div class="t1">PIXEL</div><div class="t2">İNTERNET CAFE</div><div class="t3">Oyun · Sohbet · Eğlence</div>
+<button id="go">▶ OYUNA BAŞLA</button><button id="ng" class="sc2" hidden>↻ YENİ OYUN</button><div class="hint">başlamak için dokun</div></div>
+<div class="cr">Yapımcı: <b>Doğukan Korkmaz</b></div><div class="vr">v1.4</div></div>
+<div id="hw" class="off"><div class="hc"><h2>Pixel İnternet Cafe’ye Hoş Geldin!</h2><h3>Nasıl oynanır?</h3>
+<p><i>👥</i><span>Müşteri gelir, masaya oturur, süre ister.</span></p>
+<p><i>📋</i><span>Sahip PC’den <b>ONAYLA</b>’ya bas, seans başlasın.</span></p>
+<p><i>☕</i><span>Çay/tost isterse <b>GÖNDER</b>. Ekstra kazanç!</span></p>
+<p><i>💰</i><span>Süre dolunca 💰’ya dokun, parayı topla.</span></p>
+<p><i>🛒</i><span>Parayla PC’leri geliştir, yeni PC aç, mağazadan yardımcı al.</span></p>
+<p><i>🎯</i><span>Hedef müşteri sayısına ulaş, seviye atla!</span></p>
+<p><i>🗂️</i><span>Alttaki sekmeler: <b>İstekler</b>, <b>PC’ler</b>, <b>Müşteri</b> (istatistik), <b>Mağaza</b> (yükseltmeler), <b>Ayar</b>. Her sekmenin üstünde ne işe yaradığı yazar.</span></p>
+<button id="fin">ANLADIM, BAŞLA ▶</button></div></div>
+<script>
+const $=s=>document.querySelector(s),rnd=(a,b)=>a+Math.random()*(b-a),P=a=>a[Math.floor(Math.random()*a.length)];
+const W=320,H=250,cv=$('#cv'),cx=cv.getContext('2d');cv.width=W;cv.height=H;
+const bg=document.createElement('canvas');bg.width=W;bg.height=H;const bx=bg.getContext('2d');
+const f=(c,x,y,w,h,g=cx)=>{g.fillStyle=c;g.fillRect(Math.round(x),Math.round(y),w,h)};
+const tx=(s,x,y,sz,c,g=cx,al='center',w='400')=>{g.font=w+' '+sz+'px "Pixelify Sans",monospace';g.fillStyle=c;g.textAlign=al;g.textBaseline='middle';g.fillText(s,x,y)};
+const PX=i=>22+(i%5)*46,DY=[46,100,154],dy=i=>DY[Math.floor(i/5)];
+const HRS=[1,2,4,8];
+const SES=[{p:15,d:10},{p:25,d:16},{p:45,d:26},{p:80,d:40}];
+const WT=[[.1,.2,.4,.3],[.3,.4,.3,0],[.5,.4,.1,0]];
+const SK=['#f2c9a0','#e0a878','#b9814f','#8a5a35'],HR=['#161616','#3a2414','#6b3f1d','#c9a24a','#7a2e2e'],SH=['#e63b6f','#29b6f6','#7cd957','#ffb300','#9b6dff','#ff7043'];
+const mkp=u=>({u,L:0,s:0,t:0,d:0,k:0,tea:0,toast:0,pay:0,w:0,b:0,cu:null});
+const def=()=>({m:200,t:0,lvl:1,c:0,pg:0,goal:25,ad:0,cof:0,tec:0,cas:0,tom:0,seat:0,cam:0,mute:0,earn:0,cups:0,toasts:0,sp:2,speed:1,pcs:Array.from({length:15},(_,i)=>mkp(i<4))});
+let S=def(),walk=[],pops=[],cashB=0,last=0,tab='ow';
+try{const v=JSON.parse(localStorage.getItem('ik3'));if(v&&v.pcs){while(v.pcs.length<15)v.pcs.push(mkp(0));S=Object.assign(def(),v);S.pcs.forEach(p=>{if(p.s==1||p.s==4||p.s==5){p.s=0;p.cu=null}})}}catch(e){}
+function buildStatic(){const B=(c,x,y,w,h)=>f(c,x,y,w,h,bx);
+ for(let y=38;y<H;y+=16)for(let x=0;x<W;x+=16)B((x+y)/16%2?'#4b3d40':'#463839',x,y,16,16);
+ B('#35262a',0,0,W,38);B('#241a1e',0,34,W,4);B('#2a1e23',0,0,W,3);
+ bx.shadowColor='#2ac8ff';bx.shadowBlur=8;tx('İNTERNET CAFE',160,15,16,'#58d8ff',bx,'center','700');bx.shadowBlur=0;
+ tx('Oyun  ·  Sohbet  ·  Eğlence',160,29,8,'#9fe4ff',bx);
+ B('#1b2233',66,5,28,29);B('#0e1424',68,7,24,25);tx('🎮',80,13,8,'#fff',bx);tx('OYUN',80,21,5,'#9ab',bx);tx('GÜZEL',80,27,5,'#9ab',bx);
+ B('#1b2233',226,5,26,29);B('#0e1a2c',228,7,22,25);tx('BİRLİKTE',239,22,4,'#bcd',bx);tx('GÜÇLÜ',239,28,4,'#bcd',bx);
+ B('#0d1a12',258,7,18,30);B('#1b1d26',260,10,14,27);tx('EXIT',267,6,5,'#3df07a',bx);
+ B('#12203a',274,5,30,30);tx('Fiyat Listesi',289,9,5,'#fff',bx);['1 Saat  ₺15','2 Saat  ₺25','4 Saat  ₺45','8 Saat  ₺80'].forEach((s,i)=>tx(s,289,15+i*5.5,4.5,'#9cc',bx));
+ B('#0e1c36',306,5,13,30);tx('☕',312,13,8,'#fff',bx);tx('KAHVE',312,23,4,'#58d8ff',bx);tx('MOLA',312,28,4,'#58d8ff',bx);
+ for(let i=0;i<15;i++){const x=PX(i),y=dy(i);
+  B('#2b2230',x-2,y,44,10);B('#1c1522',x-2,y+10,44,5);B('#0d0a10',x,y+15,3,8);B('#0d0a10',x+37,y+15,3,8);
+  B('#171a28',x+31,y-10,8,10);B('#242a40',x+32,y-9,6,3);
+  B('#3a3f55',x+9,y+3,16,4);
+  const cx2=x+21;B('#7d1626',cx2-5,y+11,10,10);B('#a21e33',cx2-4,y+12,8,8);B('#15151c',cx2-1,y+21,2,4);B('#15151c',cx2-5,y+25,10,1);
+  tx(String(i+1),x+4,y-19,6,'#aab',bx);}
+ B('#6b4a33',264,76,52,12);B('#4a3222',264,88,52,7);B('#2a1c13',264,95,52,2);B('#1e2433',274,70,12,8);B('#6f8bb0',275,71,10,5);
+ B('#2a1f26',304,50,14,38);for(let r=0;r<4;r++)for(let c=0;c<3;c++)B(P(['#e0603a','#e8b13a','#3a8ae0','#c04a7a']),305+c*4,52+r*9,3,6);
+ B('#4aa3ff',308,98,8,9);B('#dfe6ee',308,107,8,12);
+ B('#222a38',138,220,44,30);B('#5b7488',141,223,17,27);B('#5b7488',162,223,17,27);B('#e8b13a',142,246,15,3);B('#e8b13a',163,246,15,3);
+ B('#2a3040',132,208,56,10);tx('HOŞ GELDİNİZ',160,213,5,'#778',bx);
+ B('#22232c',18,214,46,12);B('#2c2d38',18,208,46,8);B('#1a1b22',18,226,3,3);B('#1a1b22',61,226,3,3);
+ B('#1a2230',212,206,36,44);B('#2a3548',216,210,28,40);tx('WC',230,214,6,'#bcd',bx);
+ B('#241b1f',254,206,66,44);B('#e8b13a',272,206,14,6);tx('Depo',270,212,5,'#fff',bx);[[258,222],[272,222],[296,222],[302,234],[260,236]].forEach(([x,y])=>{B('#8a5a35',x,y,11,9);B('#b07a4a',x,y,11,2)});
+ [[10,48],[8,100],[8,226],[196,226],[300,120],[298,160]].forEach(([x,y])=>{B('#5a3a22',x,y+6,6,5);B('#2f8a3c',x-2,y,10,8);B('#47b857',x,y+1,5,4)});}
+function pers(c,x,y,sit,t){const wl=sit?0:Math.sin(t*10)>0?1:-1;
+ if(!sit){f('#14141c',x-3,y+4,2,5+(wl>0?1:0));f('#14141c',x+1,y+4,2,5+(wl<0?1:0))}
+ f(c.sh,x-4,y-3,8,7);f(c.sk,x-3,y-9,6,6);f(c.hr,x-3,y-10,6,3);f('#111',x-2,y-6,1,1);f('#111',x+1,y-6,1,1);
+ if(c.ty==0){f('#ff3d81',x-4,y-9,1,4);f('#ff3d81',x+3,y-9,1,4);f('#222',x-3,y-11,6,1)}
+ if(c.ty==2)f(c.hr,x-2,y-4,4,1)}
+function mon(i,p,t){const x=PX(i)+6,y=dy(i)-13;f('#14161f',x-1,y-1,22,13);
+ if(!p.u){f('#05070c',x,y,20,11);return}
+ if(p.s==1){const ty=p.cu?p.cu.ty:0;
+  if(ty==0){f('#2a1a6a',x,y,20,11);for(let k=0;k<4;k++)f(`hsl(${(t*60+k*70)%360} 90% 60%)`,x+(t*18+k*6)%17,y+k*3,3,2)}
+  else if(ty==1){f('#e8eefc',x,y,20,11);for(let k=0;k<3;k++)f('#7a8fb0',x+2,y+2+k*3,13-k*2,1)}
+  else{f('#2b6fe0',x,y,20,3);f('#f4f7ff',x,y+3,20,8);f('#e0603a',x+2,y+5,6,4);f('#3a8ae0',x+10,y+5,8,2);f('#3a8ae0',x+10,y+8,5,1)}}
+ else if(p.s==2){f('#ffd84a',x,y,20,11);tx('₺',x+10,y+6,8,'#5a3800')}
+ else if(p.s==3){f('#0a3fc4',x,y,20,11);tx(':(',x+10,y+6,8,'#fff')}
+ else{f('#0b1020',x,y,20,11);if((t*2|0)%2)f('#58d8ff',x+4,y+5,6,1)}
+ if(p.s==1){f('#58d8ff',PX(i)+33,dy(i)-7,2,2);f('#ff3d81',PX(i)+35,dy(i)-7,2,2)}}
+function bub(x,y,s){cx.font='400 6px "Pixelify Sans",monospace';const w=Math.ceil(cx.measureText(s).width)+6;f('#5a6a8a',x-w/2-1,y-5,w+2,11);f('#141a2a',x-w/2,y-4,w,9);tx(s,x,y+.5,6,'#fff')}
+function route(i){const x=PX(i)+21,r=Math.floor(i/5),sy=dy(i)+18;return r==2?[[160,196],[x,196],[x,sy]]:r==1?[[160,196],[10,196],[10,132],[x,132],[x,sy]]:[[160,196],[10,196],[10,80],[x,80],[x,sy]]}
+function note(a,b){$('#n1').textContent=a;$('#n2').textContent=b;$('#nt').classList.remove('off');clearTimeout(note.h);note.h=setTimeout(()=>$('#nt').classList.add('off'),4000)}
+const price=p=>Math.round(SES[p.k].p*(1+.35*p.L)*(1+.1*S.seat));
+function leave(i,p){const c=p.cu;if(!c)return;c.x=PX(i)+21;c.y=dy(i)+18;c.out=1;c.path=route(i).slice().reverse().slice(1).concat([[160,246]]);walk.push(c);p.cu=null}
+function spawn(){const fr=S.pcs.map((p,i)=>p.u&&p.s==0?i:-1).filter(i=>i>=0);if(!fr.length)return;
+ const i=P(fr),p=S.pcs[i],ty=Math.floor(Math.random()*3),w=WT[ty];let r=Math.random(),k=0;while(k<3&&r>w[k]){r-=w[k];k++}
+ p.s=4;p.k=k;p.d=SES[k].d;p.tea=Math.random()<[.6,.2,.8][ty]?1:0;p.toast=Math.random()<[.35,.25,.5][ty]?1:0;p.t=0;p.pay=0;
+ walk.push({ty,sk:P(SK),hr:P(HR),sh:P(SH),x:160,y:240,path:route(i),pc:i});cashB=2.5;
+ bp(520,.12);S.c++;lvl()}
+function serve(i){const p=S.pcs[i];if(p.tea!=1)return;if(S.m<3)return pop(i,'3 ₺ lazım');S.m-=3;p.tea=2;p.pay+=14;S.cups++;pop(i,'☕ +14')}
+function serveT(i){const p=S.pcs[i];if(p.toast!=1)return;if(S.m<6)return pop(i,'6 ₺ lazım');S.m-=6;p.toast=2;p.pay+=30;S.toasts++;pop(i,'🥪 +30')}
+function approve(i){const p=S.pcs[i];if(p.s!=5)return;bp(660);p.s=1;p.t=0;p.b=2;pop(i,'✔ Onaylandı')}
+const pend=()=>{const r=[];S.pcs.forEach((p,i)=>{if(!p.u)return;if(p.s==5)r.push(['s',i]);if(p.s==1){if(p.tea==1)r.push(['t',i]);if(p.toast==1)r.push(['x',i])}});return r};
+function lvl(){while(S.c>=S.goal){S.lvl++;const r=100*S.lvl;S.m+=r;S.pg=S.goal;S.goal+=15+5*S.lvl;bp(784,.2);note('Seviye '+S.lvl+'!','Ödül: '+r+' ₺. Yeni hedef: '+S.goal+' müşteri.')}}
+function take(i){const p=S.pcs[i];bp(988,.1);S.m+=p.pay;S.earn+=p.pay;pop(i,'+'+p.pay+' ₺');p.s=0;p.pay=0}
+function pop(i,s){pops.push({x:PX(i)+21,y:dy(i)-18,t:0,s})}
+function tap(i){const p=S.pcs[i];if(!p.u)return openPC('pc');if(p.s==2)take(i);else if(p.s==5)approve(i);else if(p.s==1&&p.tea==1)serve(i);else if(p.s==1&&p.toast==1)serveT(i);else if(p.s==3){p.s=0;pop(i,'Onarıldı')}}
+function update(dt){S.t+=dt*2;cashB=Math.max(0,cashB-dt);
+ S.sp-=dt;if(S.sp<=0){S.sp=Math.max(2.5,rnd(6,11)-S.ad*1.2-S.lvl*.3);spawn()}
+ walk.forEach(c=>{let q=c.path[0];if(!q){c.done=1;return}let dx=q[0]-c.x,dy2=q[1]-c.y,d=Math.hypot(dx,dy2),st=36*dt;
+  if(d<=st){c.x=q[0];c.y=q[1];c.path.shift();if(!c.path.length){c.done=1;if(!c.out){const p=S.pcs[c.pc];p.s=5;p.cu=c;p.w=0;bp(700,.1);note('Masa '+(c.pc+1)+' · müşteri geldi!',HRS[p.k]+' saat açtırmak istiyor. Sahip PC\'den onayla.')}}}else{c.x+=dx/d*st;c.y+=dy2/d*st}});
+ walk=walk.filter(c=>!c.done);
+ S.pcs.forEach((p,i)=>{if(p.s==1){p.t+=dt;p.b=Math.max(0,p.b-dt);if(p.tea==1&&S.cof&&p.t>1.5)serve(i);if(p.toast==1&&S.tom&&p.t>2.5)serveT(i);
+   if(Math.random()<.002*dt*(1-.25*S.cam)){p.s=3;p.w=0;p.pay=0;leave(i,p)}else if(p.t>=p.d){p.pay+=price(p);p.s=2;p.w=0;leave(i,p)}}
+  else if(p.s==5){p.w+=dt;if(S.cas&&p.w>2)approve(i);else if(p.w>45){p.s=0;p.pay=0;pop(i,'😠 Gitti');leave(i,p)}}else if(p.s==2){p.w+=dt;if(S.cas&&p.w>2)take(i)}else if(p.s==3){p.w+=dt;if(S.tec&&p.w>3)p.s=0}});
+ pops.forEach(o=>{o.t+=dt;o.y-=10*dt});pops=pops.filter(o=>o.t<1.1)}
+function draw(t){cx.drawImage(bg,0,0);
+ S.pcs.forEach((p,i)=>{mon(i,p,t);if(p.cu&&(p.s==1||p.s==2||p.s==5))pers(p.cu,PX(i)+21,dy(i)+18,1,t)});
+ pers({ty:2,sk:SK[1],hr:'#161616',sh:'#222'},285,72,1,t);
+ walk.slice().sort((a,b)=>a.y-b.y).forEach(c=>pers(c,c.x,c.y,0,t));
+ S.pcs.forEach((p,i)=>{const x=PX(i)+21,y=dy(i)-22;
+  if(!p.u)return bub(x,y+10,'🔒 ₺'+ucost());
+  if(p.s==2)bub(x,y,'💰 '+p.pay+' ₺');else if(p.s==3)bub(x,y,'🔧 Bozuldu');
+  else if(p.s==5)bub(x,y,'⌛ '+HRS[p.k]+' saat');
+  else if(p.s==1){const o=(p.tea==1?'☕':'')+(p.toast==1?'🥪':'');if(o)bub(x,y,o+' lazım');else if(p.b>0)bub(x,y,'İnternete bağlandı...');else if(p.t%14<3)bub(x,y,'Oyun oynuyor...')}});
+ if(cashB>0)bub(285,60,'Hoş geldiniz!');
+ const np=pend().length;if(np){if((t*3|0)%2)f('#ffd84a',275,71,10,5);bub(268,66,'📋 '+np)}
+ pops.forEach(o=>tx(o.s,o.x,o.y,8,'#ffd84a',cx,'center','700'))}
+const ucost=()=>Math.round(150*Math.pow(1.4,S.pcs.filter(p=>p.u).length-4));
+const dtxt=()=>{const d=new Date(Date.UTC(2026,3,18,20,0)+S.t*60000),p=n=>String(n).padStart(2,'0');return p(d.getUTCDate())+'.'+p(d.getUTCMonth()+1)+'.'+d.getUTCFullYear()+' '+p(d.getUTCHours())+':'+p(d.getUTCMinutes())};
+let pcmH='',ACT=[];
+const TABS=[['ow','📋','İstekler'],['pc','🖥️','PC’ler'],['cu','👥','Müşteri'],['sh','🛒','Mağaza'],['st','⚙️','Ayar']];
+const TY=['Oyuncu','Öğrenci','Amca'],TI=['🎮','📚','🍵'],ST=['Boş','Oyunda','Ödeme hazır','Bozuk','Yolda','Onay bekliyor'];
+const upc=p=>Math.round(100*Math.pow(1.8,p.L));
+function openPC(t){tab=t;if(matchMedia('(orientation:landscape)').matches)$('#pcm').classList.add('ov');else $('#pcm').scrollIntoView({block:'nearest',behavior:'smooth'});pcmr(1)}
+function pcmr(force){const q=pend();let h='';ACT=[];
+ const inf=(i,n,s)=>`<div class="row"><i class="ic">${i}</i><div><b>${n}</b><small>${s}</small></div></div>`;
+ const row=(i,n,s,c,fn)=>`<div class="row"><i class="ic">${i}</i><div><b>${n}</b><small>${s}</small></div>${fn?`<button data-a="${ACT.push(()=>{if(S.m>=c){S.m-=c;fn()}})-1}" ${S.m<c?'disabled':''}>${c} ₺</button>`:'<button disabled>Tamam</button>'}</div>`;
+ if(tab=='ow'){h+='<div class="hd">🖥️ SAHİP PC · İSTEKLER ('+q.length+')</div><div class="ds">Müşterilerin süre, çay ve tost isteklerini buradan onaylarsın. Kırmızı rozet bekleyen istek sayısıdır.</div>';
+  if(!q.length)h+='<div class="q0">Bekleyen istek yok<span class="cur">_</span></div>';
+  q.forEach(([k,i])=>{const p=S.pcs[i];let ic,t,b,c;
+   if(k=='s'){ic='⌛';t='Masa '+(i+1)+' · '+HRS[p.k]+' saat açtırmak istiyor (₺'+price(p)+')';b='ONAYLA';c=0}
+   else if(k=='t'){ic='☕';t='Masa '+(i+1)+' · çay istiyor (maliyet 3 ₺)';b='ÇAY GÖNDER';c=3}
+   else{ic='🥪';t='Masa '+(i+1)+' · tost istiyor (maliyet 6 ₺)';b='TOST GÖNDER';c=6}
+   h+=`<button class="q ${S.m<c?'dis':''}" data-o="${k}:${i}"><span>${ic}</span><span>${t}</span><em>${b}</em></button>`})}
+ if(tab=='pc'){h+='<div class="hd">🖥️ BİLGİSAYARLAR</div><div class="ds">Parayla PC’leri geliştir: her seviye saatlik ücreti %35 artırır. Kilitli masaları açarak aynı anda daha çok müşteri alırsın.</div>';S.pcs.forEach((p,i)=>{h+=p.u?row('🖥️','PC '+(i+1)+' · '+ST[p.s],'Seviye '+(p.L+1)+'/10 · saatlik ücret +%35',upc(p),p.L<9?()=>{p.L++}:null):row('🔒','PC '+(i+1),'Kilitli · yeni bilgisayar',ucost(),()=>{p.u=1})})}
+ if(tab=='cu'){const at=S.pcs.map((p,i)=>[p,i]).filter(([p])=>p.cu&&p.s==1);
+  h+='<div class="hd">👥 MÜŞTERİLER</div><div class="ds">Cafe istatistiklerin: gelen müşteri, toplam kazanç ve şu an oyunda olanlar. Buradan sadece bakarsın, işlem yapmazsın.</div>'+inf('📊','Toplam '+S.c+' müşteri','Kazanç '+Math.floor(S.earn)+' ₺ · ☕ '+S.cups+' çay · 🥪 '+S.toasts+' tost');
+  h+=at.length?at.map(([p,i])=>inf(TI[p.cu.ty],'Masa '+(i+1)+' · '+TY[p.cu.ty],HRS[p.k]+' saat · %'+Math.min(100,Math.floor(p.t/p.d*10)*10)+' tamamlandı')).join(''):inf('💤','Şu an oyunda kimse yok','');
+  h+=inf('💡','İpucu','Oyuncular çok öder, öğrenciler az. Amcalar çayı sever.')}
+ if(tab=='sh'){h+='<div class="hd">🛒 MAĞAZA</div><div class="ds">Kalıcı yükseltmeler: reklamla daha çok müşteri çek, yardımcılarla işleri otomatiğe bağla, koltuk ve kameradan ek fayda al. Her şey bir kere satın alınır.</div>'
+  +row('📢','Reklam','Müşteri daha sık gelir ('+S.ad+'/7)',Math.round(120*Math.pow(2,S.ad)),S.ad<7?()=>S.ad++:null)
+  +row('☕','Kahve makinesi','Çayları otomatik servis eder',250,S.cof?null:()=>S.cof=1)
+  +row('🥪','Tost makinesi','Tostları otomatik hazırlar',350,S.tom?null:()=>S.tom=1)
+  +row('🔧','Teknisyen','Bozulanı kendisi onarır',400,S.tec?null:()=>S.tec=1)
+  +row('💵','Kasiyer','Süreleri onaylar, parayı toplar',500,S.cas?null:()=>S.cas=1)
+  +row('💺','Gaming koltuk','Tüm ücretler +%10 ('+S.seat+'/3)',Math.round(200*Math.pow(2.2,S.seat)),S.seat<3?()=>S.seat++:null)
+  +row('📹','Güvenlik kamerası','Arıza ihtimali −%25 ('+S.cam+'/3)',Math.round(300*Math.pow(2,S.cam)),S.cam<3?()=>S.cam++:null)}
+ if(tab=='st')h+='<div class="hd">⚙️ AYARLAR</div><div class="ds">Sesi açıp kapatabilir, oyunun nasıl oynandığını tekrar görebilir ya da tüm ilerlemeyi sıfırlayabilirsin.</div><div class="row"><div><b>❓ Nasıl oynanır?</b><small>Kısa anlatımı tekrar göster</small></div><button data-a="h">Göster</button></div><div class="row"><div><b>🔊 Ses efektleri</b><small>Para, seviye, yeni müşteri</small></div><button data-a="m">'+(S.mute?'Kapalı':'Açık')+'</button></div><div class="row"><div><b>Oyunu sıfırla</b><small>Tüm ilerleme silinir</small></div><button data-a="r">'+(rc?'Emin misin?':'Sıfırla')+'</button></div>';
+ const tb=TABS.map(([k,ic,n])=>`<button data-tab="${k}" class="${k==tab?'on':''}">${ic}<span>${n}</span>${k=='ow'&&q.length?'<b class="bd">'+q.length+'</b>':''}</button>`).join('')+'<button class="x" data-x>✕</button>';
+ const full=tb+h;if(full===pcmH&&!force)return;
+ const sc=$('#sc'),keep=pcmr.t==tab?sc.scrollTop:0;pcmr.t=tab;pcmH=full;$('#tb').innerHTML=tb;sc.innerHTML=h;sc.scrollTop=keep}
+$('#scr').addEventListener('click',e=>{const t=e.target;let o;
+ if(o=t.closest('[data-tab]')){tab=o.dataset.tab;pcmr(1);return}
+ if(t.closest('[data-x]')){$('#pcm').classList.remove('ov');return}
+ if(o=t.closest('[data-o]')){const[k,n]=o.dataset.o.split(':'),i=+n;if(k=='s')approve(i);else if(k=='t')serve(i);else serveT(i);pcmr(1);return}
+ if(o=t.closest('[data-a]')){if(o.dataset.a=='h')$('#hw').classList.remove('off');else if(o.dataset.a=='m')S.mute=S.mute?0:1;else if(o.dataset.a=='r'){if(rc){rc=0;newGame()}else{rc=1;clearTimeout(rc.h);setTimeout(()=>{rc=0},4000)}}else{const fn=ACT[+o.dataset.a];if(fn)fn()}pcmr(1)}});
+function hud(){tut();const n=performance.now();if(n-(hud.t||0)>250){hud.t=n;pcmr()}
+ const un=S.pcs.filter(p=>p.u).length,oc=S.pcs.filter(p=>p.s==1||p.s==4||p.s==5).length;
+ $('#m').textContent=Math.floor(S.m).toLocaleString('tr-TR');$('#oc').textContent=oc+'/'+un;$('#lv').textContent=S.lvl;$('#lvb').textContent=S.lvl;
+ $('#xp').style.width=(S.c-S.pg)/(S.goal-S.pg)*100+'%';$('#dt').textContent=dtxt();
+ $('#gt').textContent='Hedef: '+S.goal+' müşteri · Gelen: '+S.c+' / '+S.goal;$('#gb').firstChild.style.width=Math.min(100,S.c/S.goal*100)+'%'}
+document.querySelectorAll('[data-sp]').forEach(b=>b.onclick=()=>{S.speed=+b.dataset.sp;document.querySelectorAll('[data-sp]').forEach(x=>x.classList.toggle('on',x==b))});
+cv.addEventListener('pointerdown',e=>{const r=cv.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*W,y=(e.clientY-r.top)/r.height*H;
+ if(x>=258&&x<=318&&y>=62&&y<=98)return openPC('ow');
+ for(let i=0;i<15;i++){const px=PX(i),py=dy(i);if(x>=px-4&&x<=px+46&&y>=py-30&&y<=py+28){tap(i);break}}});
+function loop(ts){const dt=Math.min(.1,(ts-last)/1000||0);last=ts;if(S.speed&&!tt)update(dt*(S.speed==2?2.5:1));draw(ts/1000);hud();requestAnimationFrame(loop)}
+setInterval(()=>{try{localStorage.setItem('ik3',JSON.stringify(S,(k,v)=>k=='acts'?undefined:v))}catch(e){}},700);
+let tt=1,au,rc=0;
+function newGame(){S=def();S.tut=1;walk=[];pops=[];cashB=0;tut.n=null;tut.e=0;tt=1;tab='ow';$('#pcm').classList.remove('ov');
+ document.querySelectorAll('[data-sp]').forEach(b=>b.classList.toggle('on',+b.dataset.sp==S.speed));
+ try{localStorage.setItem('ik3',JSON.stringify(S))}catch(e){}
+ $('#hw').classList.remove('off');pcmr(1);note('Yeni cafe','Sıfırdan başlıyorsun.')}
+const TT=['','👥 Müşteri bekleniyor... birazdan gelecek.','📋 Müşteri geldi! Sahip PC’de ONAYLA’ya bas (ya da masaya dokun).','☕ Seans başladı. Çay/tost isterse GÖNDER’e bas, ekstra kazandırır.','💰 Süre doldu! 💰 balonuna dokunup parayı topla.','🛒 Aferin! Parayla PC’leri geliştir, Mağaza’dan yardımcı al. Başarılar!'];
+function tut(){const b=$('#tu');if(tt||!S.tut){b.hidden=true;return}b.hidden=false;const a=S.pcs,w=a.some(p=>p.s==5),pl=a.some(p=>p.s==1),pd=a.some(p=>p.s==2);
+ let n=S.earn>0?5:pd?4:pl?3:w?2:1;if(n==5){tut.e=tut.e||performance.now();if(performance.now()-tut.e>7000){S.tut=0;return}}
+ const wi=a.findIndex(p=>p.s==5),k=n+':'+wi;if(tut.n!=k){tut.n=k;$('#tx').textContent=n==2&&wi>=0?'📋 Masa '+(wi+1)+'’e müşteri geldi! Sahip PC’de ONAYLA’ya bas (ya da masaya dokun).':TT[n]}}
+function bp(f,d=.08){if(S.mute||tt)return;try{au=au||new(window.AudioContext||window.webkitAudioContext)();const o=au.createOscillator(),g=au.createGain();o.type='square';o.frequency.value=f;g.gain.value=.04;o.connect(g);g.connect(au.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,au.currentTime+d);o.stop(au.currentTime+d)}catch(e){}}
+(()=>{const c=$('#tcv'),g=c.getContext('2d');c.width=160;c.height=100;
+ const st=Array.from({length:55},()=>[Math.random()*160|0,Math.random()*62|0,Math.random()*6]),bl=[];for(let x=0;x<160;){const w=8+Math.random()*12|0,h=18+Math.random()*34|0;bl.push([x,w,h]);x+=w+1}
+ function d(t){if(!tt||go.l)return;const gr=g.createLinearGradient(0,0,0,100);gr.addColorStop(0,'#080d24');gr.addColorStop(1,'#3a1a52');g.fillStyle=gr;g.fillRect(0,0,160,100);
+  st.forEach(([x,y,p])=>{g.fillStyle=Math.sin(t/500+p)>0?'#fff':'#5a6a9a';g.fillRect(x,y,1,1)});
+  g.fillStyle='#ffe9a8';g.fillRect(129,10,6,8);g.fillRect(128,11,8,6);
+  bl.forEach(([x,w,h],i)=>{g.fillStyle='#10162a';g.fillRect(x,100-h,w,h);for(let y=100-h+3;y<96;y+=5)for(let q=x+2;q<x+w-2;q+=4)if(Math.sin(t/1100+q*7+y*3+i)>.2){g.fillStyle='#ffcf4a';g.fillRect(q,y,2,2)}});
+  requestAnimationFrame(d)}requestAnimationFrame(d);
+ const sv=S.c>0||S.t>5,fin=()=>{tt=0;$('#hw').classList.add('off');bp(660,.1);setTimeout(()=>bp(880,.12),110)},go=nw=>{if(!tt||go.l)return;go.l=1;$('#ti').classList.add('off');if(nw){S.tut=1;$('#hw').classList.remove('off')}else fin()};
+ if(sv){$('#go').textContent='▶ DEVAM ET';$('#ng').hidden=false}
+ $('#go').onclick=()=>go(!sv);let nc=0;$('#ng').onclick=()=>{if(nc){nc=0;$('#ng').textContent='↻ YENİ OYUN';newGame();go.l=1;$('#ti').classList.add('off')}else{nc=1;$('#ng').textContent='EMİN MİSİN? TEKRAR DOKUN';setTimeout(()=>{nc=0;$('#ng').textContent='↻ YENİ OYUN'},4000)}};$('#fin').onclick=fin;$('#sk').onclick=()=>{S.tut=0};
+ addEventListener('keydown',e=>{if(e.key=='Enter'){if(go.l)$('#hw').classList.contains('off')||fin();else go(!sv)}})})();
+pcmr(1);buildStatic();document.fonts.load('16px "Pixelify Sans"').then(buildStatic).catch(()=>{});
+document.querySelectorAll('[data-sp]')[S.speed].classList.add('on');
+requestAnimationFrame(loop);
+</script></body></html>
